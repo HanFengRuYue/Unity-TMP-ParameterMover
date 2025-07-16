@@ -1,6 +1,6 @@
 # Unity TMP Parameter Mover
 
-一个用于移动JSON文件中字体参数的工具，专为Unity TextMeshPro字体文件处理而设计。
+一个用于移动JSON文件中字体参数的工具。
 
 ## 功能特性
 
@@ -8,10 +8,7 @@
 - 🛡️ 智能保留特定字段（`Name`、`m_FamilyName`、`m_StyleName`）
 - 📁 在原文件目录创建专用输出文件夹
 - 📄 使用原文件名保存处理后的文件
-- 🎨 完美的JSON格式化输出
-- ⚡ 支持带引号的文件路径
 - 🔍 完整的错误处理和用户友好提示
-- 🔧 自动清理空数组格式
 
 ## 使用方法
 
@@ -83,8 +80,6 @@ UnityTMPParameterMover/
 ├── CustomJsonFormatting.cs       # JSON格式化工具
 ├── UnityTMPParameterMover.csproj # 项目配置文件
 ├── publish.bat                   # 发布脚本
-├── 发布说明.md                    # 详细发布说明
-├── 项目发布完成.txt                # 项目总结
 ├── .gitignore                    # Git忽略文件
 └── README.md                     # 项目自述文件
 ```
@@ -107,16 +102,3 @@ UnityTMPParameterMover/
 - 文件读写权限检查
 - 路径格式清理（支持带引号路径）
 - 用户友好的错误提示
-
-## 许可证
-
-Copyright © 2025 HanFengRuYue
-
-## 更新日志
-
-### v1.0.0
-- 初始版本发布
-- 支持JSON字体参数移动
-- 完整的错误处理
-- 用户友好的界面
-- 独立exe程序发布 
