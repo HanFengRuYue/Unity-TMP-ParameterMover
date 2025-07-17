@@ -11,6 +11,9 @@
 - 🔍 完整的错误处理和用户友好提示
 - 💻 支持命令行参数和交互式模式
 - ⚡ 支持批处理脚本集成
+- 📦 支持多文件批量处理
+- 📂 支持文件夹批量处理
+- 📊 显示参数变化对比信息
 
 ## 使用方法
 
@@ -19,20 +22,29 @@
 使用命令行参数直接指定文件路径：
 
 ```cmd
-UnityTMPParameterMover.exe -o "原始文件路径" -f "来源文件路径"
+UnityTMPParameterMover.exe -o "原始文件路径或文件夹路径" -f "来源文件路径"
 ```
 
 #### 命令行参数
 
-- `-o, --origin <文件路径>` - 指定原始文件路径
+- `-o, --origin <文件路径或文件夹路径>` - 指定原始文件路径或文件夹路径（支持多个路径，用分号分隔）
 - `-f, --from <文件路径>` - 指定来源文件路径  
 - `-h, --help` - 显示帮助信息
 
 #### 命令行示例
 
 ```cmd
+# 单个文件处理
 UnityTMPParameterMover.exe -o "D:\Game\font_original.json" -f "D:\Game\font_source.json"
-UnityTMPParameterMover.exe --origin D:\Game\font_original.json --from D:\Game\font_source.json
+
+# 多个文件处理
+UnityTMPParameterMover.exe -o "file1.json;file2.json" -f "source.json"
+
+# 文件夹批量处理
+UnityTMPParameterMover.exe -o "D:\Game\fonts\" -f "D:\Game\font_source.json"
+
+# 混合处理（文件夹+文件）
+UnityTMPParameterMover.exe -o "D:\Game\fonts\;D:\Game\special.json" -f "D:\Game\font_source.json"
 ```
 
 ### 交互式模式
@@ -40,7 +52,7 @@ UnityTMPParameterMover.exe --origin D:\Game\font_original.json --from D:\Game\fo
 如果不提供命令行参数，程序将以交互式模式运行：
 
 1. 双击运行 `UnityTMPParameterMover.exe`
-2. 根据提示输入原始JSON文件路径
+2. 根据提示输入原始JSON文件路径或文件夹路径（支持多个路径，用分号分隔）
 3. 输入来源JSON文件路径（参数来源）
 4. 程序将自动处理并在原文件目录创建 `Moved_Parameters` 文件夹
 5. 处理后的文件将保存在该文件夹中，使用原文件名
@@ -48,26 +60,46 @@ UnityTMPParameterMover.exe --origin D:\Game\font_original.json --from D:\Game\fo
 #### 交互式输入示例
 
 ```
-请输入原始文件路径: D:\Game\font_original.json
+请输入原始文件路径或文件夹路径（支持多个路径，用分号分隔）: D:\Game\font_original.json
 请输入来源文件路径: D:\Game\font_source.json
 ```
 
-### 批处理集成
+#### 批量处理示例
 
-项目包含了一个批处理脚本示例 `example_usage.bat`，展示如何在自动化流程中使用该程序：
-
-```cmd
-rem 设置文件路径
-set ORIGIN_FILE=original_font.json
-set FROM_FILE=source_font.json
-
-rem 执行参数移动
-UnityTMPParameterMover.exe -o "%ORIGIN_FILE%" -f "%FROM_FILE%"
+```
+请输入原始文件路径或文件夹路径（支持多个路径，用分号分隔）: D:\Game\fonts\;D:\Game\special.json
+请输入来源文件路径: D:\Game\font_source.json
 ```
 
 ### 输出
 
-程序将在 `D:\Game\` 目录下创建 `Moved_Parameters` 文件夹，并将处理后的文件保存为 `D:\Game\Moved_Parameters\font_original.json`。
+程序将在每个原始文件目录下创建 `Moved_Parameters` 文件夹，并将处理后的文件保存到该文件夹中。例如：
+- 原始文件：`D:\Game\font_original.json`
+- 输出文件：`D:\Game\Moved_Parameters\font_original.json`
+
+### 参数对比功能
+
+程序会在处理每个文件时显示详细的参数变化信息：
+
+```
+正在处理: font_original.json
+==================================================
+移动的参数 (15 个):
+  ✓ m_fontInfo.PointSize
+  ✓ m_fontInfo.Scale
+  ✓ m_FaceInfo.m_pointSize
+  ✓ m_FaceInfo.m_scale
+  ✓ m_AtlasWidth
+  ✓ m_AtlasHeight
+  ✓ m_GlyphTable.m_Index
+  ✓ m_CharacterTable.m_Unicode
+  ... 更多参数
+  
+输出文件: D:\Game\Moved_Parameters\font_original.json
+✓ 处理成功: font_original.json
+```
+
+这样可以清楚地看到哪些参数被成功移动，哪些文件没有变化。
 
 ## 处理的字段
 
@@ -118,7 +150,6 @@ UnityTMPParameterMover/
 ├── CustomJsonFormatting.cs       # JSON格式化工具
 ├── UnityTMPParameterMover.csproj # 项目配置文件
 ├── publish.bat                   # 发布脚本
-├── example_usage.bat             # 批处理使用示例
 ├── .gitignore                    # Git忽略文件
 └── README.md                     # 项目自述文件
 ```
