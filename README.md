@@ -1,6 +1,6 @@
 # Unity TMP Parameter Mover
 
-一个现代化的 WinUI 3 桌面应用程序，用于批量处理 Unity TextMeshPro 字体资产文件，自动迁移字体参数。
+一个现代化的 WinUI 3 桌面应用程序，用于批量处理 Unity TextMeshPro 字体资产文件，自动迁移字体参数。用于辅助解包修改Unity游戏内部TMP字体。
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![.NET](https://img.shields.io/badge/.NET-9.0-purple.svg)
@@ -154,7 +154,7 @@ Unity-TMP-ParameterMover-WinUI/
 A: 请确保已安装 [.NET 9.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/9.0) 和 [Windows App SDK Runtime](https://learn.microsoft.com/windows/apps/windows-app-sdk/downloads)。
 
 **Q: 支持哪些文件格式？**  
-A: 程序处理 Unity TextMeshPro 字体资产的 JSON 格式文件（通常是 `.asset` 文件）。
+A: 程序处理使用UABEA等解包工具解包出来 Unity TextMeshPro 字体资产的 JSON 格式文件。
 
 **Q: 原始文件会被修改吗？**  
 A: 不会。程序会在原文件目录创建 `Moved_Parameters` 文件夹，并将处理后的文件保存到该文件夹中，原文件不会被修改。
