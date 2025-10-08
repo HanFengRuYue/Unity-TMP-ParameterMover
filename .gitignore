@@ -1,60 +1,94 @@
-# .NET 构建输出
-bin/
-obj/
-publish/
+# 编译输出
+Release/
+Release_*/
+Build/
+Build_*/
 
-# Visual Studio 文件
+# Visual Studio
 .vs/
 *.user
 *.suo
-*.userprefs
+*.userosscache
 *.sln.docstates
 
-# 发布配置文件
-*.pubxml
-*.pubxml.user
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
 
-# 调试符号文件
-*.pdb
-*.dbg
-
-# 临时文件
-*.tmp
-*.temp
-*.log
-*.cache
-
-# 用户设置文件
-*.exe.config
-appsettings.Development.json
-
-# 测试文件
-test_*/
-*_test.json
-*_test.txt
-
-# 系统文件
-Thumbs.db
-Desktop.ini
-.DS_Store
-
-# IDE 配置
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# 包管理器
+# NuGet Packages
+*.nupkg
+*.snupkg
 packages/
-node_modules/
+.nuget/
 
-# 运行时文件
-*.dll
-*.exe
+# Test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
 *.pdb
-*.manifest
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
 
-# 忽略发布输出目录
-/publish/
-/bin/
-/obj/ 
+# Visual Studio cache files
+*.cache
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Rider
+.idea/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/

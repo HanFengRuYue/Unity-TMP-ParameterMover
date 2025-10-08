@@ -1,0 +1,37 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+ VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity-TMP-ParameterMover-WinUI", "Unity-TMP-ParameterMover-WinUI\Unity-TMP-ParameterMover-WinUI.csproj", "{27897FCD-D5C4-474F-BC95-BB1B6D78083A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Debug|ARM64.Build.0 = Debug|ARM64
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Debug|x64.ActiveCfg = Debug|x64
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Debug|x64.Build.0 = Debug|x64
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Debug|x86.ActiveCfg = Debug|x86
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Debug|x86.Build.0 = Debug|x86
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Release|ARM64.ActiveCfg = Release|ARM64
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Release|ARM64.Build.0 = Release|ARM64
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Release|x64.ActiveCfg = Release|x64
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Release|x64.Build.0 = Release|x64
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Release|x86.ActiveCfg = Release|x86
+		{27897FCD-D5C4-474F-BC95-BB1B6D78083A}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3322AE4C-EEBE-4ED1-A14F-392B80319975}
+	EndGlobalSection
+EndGlobal
