@@ -1,174 +1,175 @@
 # Unity TMP Parameter Mover
 
-一个用于移动JSON文件中字体参数的工具。
+一个现代化的 WinUI 3 桌面应用程序，用于批量处理 Unity TextMeshPro 字体资产文件，自动迁移字体参数。
 
-## 功能特性
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![.NET](https://img.shields.io/badge/.NET-9.0-purple.svg)
+![Platform](https://img.shields.io/badge/platform-Windows-blue.svg)
 
-- 🔄 自动移动JSON文件中的字体参数
-- 🛡️ 智能保留特定字段（`Name`、`m_FamilyName`、`m_StyleName`）
-- 📁 在原文件目录创建专用输出文件夹
-- 📄 使用原文件名保存处理后的文件
-- 🔍 完整的错误处理和用户友好提示
-- 💻 支持命令行参数和交互式模式
-- ⚡ 支持批处理脚本集成
-- 📦 支持多文件批量处理
-- 📂 支持文件夹批量处理
-- 📊 显示参数变化对比信息
+## ✨ 功能特性
 
-## 使用方法
+- 🎨 **现代化 UI** - 采用 WinUI 3 设计，支持 Mica 材质背景
+- 🔄 **批量处理** - 支持多文件和文件夹批量处理
+- 🛡️ **智能保留** - 自动保留特定字段（`Name`、`m_FamilyName`、`m_StyleName`）
+- 📁 **智能输出** - 在原文件目录创建 `Moved_Parameters` 文件夹
+- 📊 **实时日志** - 显示详细的处理进度和参数变化信息
+- 🔍 **完整验证** - 全面的错误处理和用户友好提示
+- ⚡ **高性能** - 使用 `System.Text.Json` 确保快速处理
+- 🌐 **多平台支持** - 支持 x64、x86 和 ARM64 架构
 
-### 命令行模式（推荐）
+## 📋 系统要求
 
-使用命令行参数直接指定文件路径：
+### 运行环境
 
-```cmd
-UnityTMPParameterMover.exe -o "原始文件路径或文件夹路径" -f "来源文件路径"
-```
+- **操作系统**: Windows 10 (1809) 或更高版本
+- **.NET Runtime**: [.NET 9.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/9.0)
+- **Windows App SDK**: [Windows App SDK Runtime 1.8](https://learn.microsoft.com/windows/apps/windows-app-sdk/downloads)
 
-#### 命令行参数
+### 开发环境
 
-- `-o, --origin <文件路径或文件夹路径>` - 指定原始文件路径或文件夹路径（支持多个路径，用分号分隔）
-- `-f, --from <文件路径>` - 指定来源文件路径  
-- `-h, --help` - 显示帮助信息
+- **IDE**: Visual Studio 2022 或更高版本
+- **SDK**: .NET 9.0 SDK
+- **Windows SDK**: 10.0.26100.0 或更高版本
 
-#### 命令行示例
+## 🚀 快速开始
 
-```cmd
-# 单个文件处理
-UnityTMPParameterMover.exe -o "D:\Game\font_original.json" -f "D:\Game\font_source.json"
+### 下载和运行
 
-# 多个文件处理
-UnityTMPParameterMover.exe -o "file1.json;file2.json" -f "source.json"
+1. 从 [Releases](../../releases) 页面下载最新版本的 `Unity_TMP_ParameterMover_WinUI.exe`
+2. 确保已安装 [.NET 9.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/9.0)
+3. 双击运行程序
 
-# 文件夹批量处理
-UnityTMPParameterMover.exe -o "D:\Game\fonts\" -f "D:\Game\font_source.json"
+### 使用步骤
 
-# 混合处理（文件夹+文件）
-UnityTMPParameterMover.exe -o "D:\Game\fonts\;D:\Game\special.json" -f "D:\Game\font_source.json"
-```
+1. **选择原始文件**
+   - 点击「选择文件」按钮选择一个或多个需要更新的 JSON 文件
+   - 或点击「选择文件夹」按钮批量导入文件夹中的所有 JSON 文件
 
-### 交互式模式
+2. **选择来源文件**
+   - 点击「选择来源文件」按钮选择提供新参数的 JSON 文件
 
-如果不提供命令行参数，程序将以交互式模式运行：
+3. **开始处理**
+   - 点击「开始处理」按钮
+   - 查看实时日志了解处理进度
 
-1. 双击运行 `UnityTMPParameterMover.exe`
-2. 根据提示输入原始JSON文件路径或文件夹路径（支持多个路径，用分号分隔）
-3. 输入来源JSON文件路径（参数来源）
-4. 程序将自动处理并在原文件目录创建 `Moved_Parameters` 文件夹
-5. 处理后的文件将保存在该文件夹中，使用原文件名
+4. **查看结果**
+   - 处理完成后，在原文件目录下的 `Moved_Parameters` 文件夹中找到处理后的文件
 
-#### 交互式输入示例
+### 输出示例
 
 ```
-请输入原始文件路径或文件夹路径（支持多个路径，用分号分隔）: D:\Game\font_original.json
-请输入来源文件路径: D:\Game\font_source.json
+原始文件: D:\Game\Fonts\MyFont.asset
+输出文件: D:\Game\Fonts\Moved_Parameters\MyFont.asset
 ```
 
-#### 批量处理示例
+## 📦 处理的参数
 
-```
-请输入原始文件路径或文件夹路径（支持多个路径，用分号分隔）: D:\Game\fonts\;D:\Game\special.json
-请输入来源文件路径: D:\Game\font_source.json
-```
+程序会从来源文件复制以下参数到原始文件：
 
-### 输出
+| 参数名称 | 说明 | 保留字段 |
+|---------|------|---------|
+| `m_fontInfo` | 字体信息 | `Name` |
+| `m_glyphInfoList` | 字形信息列表 | - |
+| `m_FaceInfo` | 字体面信息 | `m_FamilyName`, `m_StyleName` |
+| `m_AtlasWidth` | 图集宽度 | - |
+| `m_AtlasHeight` | 图集高度 | - |
+| `m_GlyphTable` | 字形表 | - |
+| `m_CharacterTable` | 字符表 | - |
+| `m_UsedGlyphRects` | 已使用字形矩形 | - |
+| `m_FreeGlyphRects` | 可用字形矩形 | - |
 
-程序将在每个原始文件目录下创建 `Moved_Parameters` 文件夹，并将处理后的文件保存到该文件夹中。例如：
-- 原始文件：`D:\Game\font_original.json`
-- 输出文件：`D:\Game\Moved_Parameters\font_original.json`
+## 🔨 构建说明
 
-### 参数对比功能
+### 使用构建脚本（推荐）
 
-程序会在处理每个文件时显示详细的参数变化信息：
+```powershell
+# 构建 x64 版本（默认）
+.\Build.ps1
 
-```
-正在处理: font_original.json
-==================================================
-移动的参数 (15 个):
-  ✓ m_fontInfo.PointSize
-  ✓ m_fontInfo.Scale
-  ✓ m_FaceInfo.m_pointSize
-  ✓ m_FaceInfo.m_scale
-  ✓ m_AtlasWidth
-  ✓ m_AtlasHeight
-  ✓ m_GlyphTable.m_Index
-  ✓ m_CharacterTable.m_Unicode
-  ... 更多参数
-  
-输出文件: D:\Game\Moved_Parameters\font_original.json
-✓ 处理成功: font_original.json
+# 构建其他平台
+.\Build.ps1 -Platform x86
+.\Build.ps1 -Platform ARM64
 ```
 
-这样可以清楚地看到哪些参数被成功移动，哪些文件没有变化。
+构建完成后，单文件 EXE（约 38 MB）将输出到 `Release` 文件夹。
 
-## 处理的字段
+### 手动构建
 
-程序会处理以下JSON字段：
+```powershell
+cd Unity-TMP-ParameterMover-WinUI
 
-- `m_GlyphTable` - 字形表
-- `m_FaceInfo` - 字体信息（保留 `m_FamilyName` 和 `m_StyleName`）
-- `m_AtlasWidth` - 图集宽度
-- `m_AtlasHeight` - 图集高度
-- `m_CharacterTable` - 字符表
-- `m_UsedGlyphRects` - 已使用字形矩形
-- `m_FreeGlyphRects` - 可用字形矩形
+# 恢复依赖
+dotnet restore
 
-## 构建说明
+# 构建
+dotnet build --configuration Release -p:Platform=x64
 
-### 环境要求
-
-- .NET 8.0 SDK
-- Windows 10/11 x64
-
-### 构建步骤
-
-1. 克隆或下载项目
-2. 在项目根目录运行：
-   ```bash
-   dotnet build
-   ```
-
-### 发布exe程序
-
-运行批处理脚本：
-```cmd
-publish.bat
+# 发布单文件
+dotnet publish `
+    --configuration Release `
+    --runtime win-x64 `
+    --self-contained false `
+    -p:Platform=x64 `
+    -p:PublishSingleFile=true
 ```
 
-或手动执行：
-```bash
-dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:DebugType=none -o .\publish
-```
-
-发布的exe文件将位于 `publish\` 目录中。
-
-## 项目结构
+## 📂 项目结构
 
 ```
-UnityTMPParameterMover/
-├── Program.cs                    # 主程序文件
-├── CustomJsonFormatting.cs       # JSON格式化工具
-├── UnityTMPParameterMover.csproj # 项目配置文件
-├── publish.bat                   # 发布脚本
-├── .gitignore                    # Git忽略文件
-└── README.md                     # 项目自述文件
+Unity-TMP-ParameterMover-WinUI/
+├── App.xaml(.cs)                    # 应用程序入口点
+├── MainWindow.xaml(.cs)             # 主窗口和 UI 逻辑
+├── Services/
+│   └── TMPParameterService.cs       # 核心参数迁移逻辑
+├── Models/
+│   └── ProcessResult.cs             # 处理结果数据模型
+├── Utilities/
+│   └── CustomJsonFormatting.cs      # JSON 格式化工具
+├── Unity-TMP-ParameterMover-WinUI.csproj
+└── ICON.ico                         # 应用程序图标
 ```
 
-## 技术特性
+## 🛠️ 技术栈
 
-- **平台**: .NET 8.0
-- **依赖**: Newtonsoft.Json 13.0.3
-- **目标平台**: Windows x64
-- **发布方式**: 独立exe程序（包含完整.NET运行时）
-- **文件大小**: 约60-70MB
-- **兼容性**: Windows 10/11 x64系统
+- **框架**: .NET 9.0 + WinUI 3
+- **Windows App SDK**: 1.8
+- **JSON 处理**: System.Text.Json
+- **架构模式**: MVVM-lite
+- **部署方式**: 框架依赖单文件发布
+- **文件大小**: 约 38 MB
 
-## 错误处理
+## 🔧 高级配置
 
-程序包含完整的错误处理机制：
+### 自定义输出目录
 
-- 文件存在性检查
-- JSON格式验证
-- 文件读写权限检查
-- 路径格式清理（支持带引号路径）
-- 用户友好的错误提示
+默认情况下，处理后的文件会保存到原文件目录下的 `Moved_Parameters` 文件夹。这个行为在 `TMPParameterService.cs` 中定义。
+
+### JSON 格式化
+
+程序使用 `CustomJsonFormatting` 工具保持 JSON 文件的可读性，确保输出格式与 Unity 编辑器生成的格式一致。
+
+## ❓ 常见问题
+
+**Q: 程序无法启动，提示缺少运行时？**  
+A: 请确保已安装 [.NET 9.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/9.0) 和 [Windows App SDK Runtime](https://learn.microsoft.com/windows/apps/windows-app-sdk/downloads)。
+
+**Q: 支持哪些文件格式？**  
+A: 程序处理 Unity TextMeshPro 字体资产的 JSON 格式文件（通常是 `.asset` 文件）。
+
+**Q: 原始文件会被修改吗？**  
+A: 不会。程序会在原文件目录创建 `Moved_Parameters` 文件夹，并将处理后的文件保存到该文件夹中，原文件不会被修改。
+
+**Q: 如何验证处理结果？**  
+A: 查看日志窗口中的详细信息，程序会列出所有被修改的参数。您也可以使用文本编辑器或 Unity 编辑器对比原文件和处理后的文件。
+
+## 📄 许可证
+
+本项目采用 MIT 许可证。详见 [LICENSE](LICENSE) 文件。
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+## 📮 联系方式
+
+如有问题或建议，请通过 GitHub Issues 联系。
